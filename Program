@@ -1,0 +1,176 @@
+import java.util.ArrayList;
+
+/*******************************************************
+
+Program Number: Assignment 4, Problem #1
+
+Purpose/Description: Implement a non-recursive Mergesort
+
+Certification:
+
+I hereby certify that this work is my own and none of it is the work of any other 
+
+person.
+
+ Ricardo Maury
+
+*******************************************************/
+public class Assignment4Problem1 {
+
+    public static void mergesort(int a[]) {
+
+        int countSubSize = 0, count2 = 0, location = 0;
+        for (int j = 1; j < a.length; j++) {
+            countSubSize = (int) Math.pow(2, j);
+            if (countSubSize > a.length) {
+                countSubSize = a.length;
+                j = a.length;
+            }
+            int[] in = new int[countSubSize];
+            for (int i = 0; i < a.length; i++) {
+                in[count2] = a[i];
+                count2++;
+                if (count2 == countSubSize || i + 1 == a.length) {
+
+                    selectionForMergeSort(in, location, a);
+                    count2 = 0;
+                    location = i + 1;
+                }
+            }
+            location = 0;
+        }
+    }
+
+    public static void selectionForMergeSort(int[] c, int location, int[] b) {
+
+        for(int i = 0; i<c.length-1; i++){
+            int index = i;
+            for(int j=i+1; j<c.length; j++){
+                if(c[j]<c[index]){
+                    index = j;
+                }
+            }
+            int smallNum = c[index];
+            c[index] = c[i];
+            c[i] = smallNum;
+        }
+        int start = 0;
+        for (int j = location; j < c.length; j++) {
+            b[j] = c[start];
+            start++;
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayList a = new ArrayList();
+        ArrayList z = new ArrayList();
+
+
+        int[] yes = new int[16];
+        yes[0] = 16;
+        yes[1] = 2;
+        yes[2] = 9;
+        yes[3] = 7;
+        yes[4] = 11;
+        yes[5] = 14;
+        yes[6] = 13;
+        yes[7] = 8;
+        yes[8] = 5;
+        yes[9] = 10;
+        yes[10] = 3;
+        yes[11] = 1;
+        yes[12] = 4;
+        yes[13] = 6;
+        yes[14] = 15;
+        yes[15] = 12;
+        for (int i = 0; i < yes.length; i++) {
+            a.add(i, yes[i]);
+        }
+        System.out.println("Before Mergesort: " + a);
+        mergesort(yes);
+        for (int i = 0; i < yes.length; i++) {
+            z.add(i, yes[i]);
+        }
+        System.out.println("After Mergesort: " + z + "\n");
+        
+        ArrayList aa = new ArrayList();
+        ArrayList zz = new ArrayList();
+
+
+        int[] yess = new int[20];
+        yess[0] = 16;
+        yess[1] = 20;
+        yess[2] = 9;
+        yess[3] = 7;
+        yess[4] = 11;
+        yess[5] = 14;
+        yess[6] = 13;
+        yess[7] = 18;
+        yess[8] = 5;
+        yess[9] = 10;
+        yess[10] = 3;
+        yess[11] = 1;
+        yess[12] = 4;
+        yess[13] = 6;
+        yess[14] = 15;
+        yess[15] = 8;
+        yess[16] = 17;
+        yess[17] = 12;
+        yess[18] = 2;
+        yess[19] = 19;
+        for (int i = 0; i < yess.length; i++) {
+            aa.add(i, yess[i]);
+        }
+        System.out.println("Before Mergesort: " + aa);
+        mergesort(yess);
+        for (int i = 0; i < yess.length; i++) {
+            zz.add(i, yess[i]);
+        }
+        System.out.println("After Mergesort: " + zz + "\n");
+        
+        ArrayList aaa = new ArrayList();
+        ArrayList zzz = new ArrayList();
+
+
+        int[] yesss = new int[10];
+        yesss[0] = 16;
+        yesss[1] = 2;
+        yesss[2] = 9;
+        yesss[3] = 7;
+        yesss[4] = 11;
+        yesss[5] = 14;
+        yesss[6] = 13;
+        yesss[7] = 8;
+        yesss[8] = 5;
+        yesss[9] = 10;
+        for (int i = 0; i < yesss.length; i++) {
+            aaa.add(i, yesss[i]);
+        }
+        System.out.println("Before Mergesort: " + aaa);
+        mergesort(yesss);
+        for (int i = 0; i < yesss.length; i++) {
+            zzz.add(i, yesss[i]);
+        }
+        System.out.println("After Mergesort: " + zzz + "\n");
+        
+        ArrayList b = new ArrayList();
+        ArrayList y = new ArrayList();
+
+
+        int[] yessss = new int[3];
+        yessss[0] = 16;
+        yessss[1] = 2;
+        yessss[2] = 9;
+        for (int i = 0; i < yessss.length; i++) {
+            b.add(i, yessss[i]);
+        }
+        System.out.println("Before Mergesort: " + b);
+        mergesort(yessss);
+        for (int i = 0; i < yessss.length; i++) {
+            y.add(i, yessss[i]);
+        }
+        System.out.println("After Mergesort: " + y + "\n");
+
+    }
+
+}
